@@ -4,6 +4,7 @@ import { Model } from './Model';
 import {
   BlockchainNameEnum,
   CryptoCurrencyEnum,
+  InsuredRiskTypeEnum,
   PaymentProviderEnum,
   PayoutStatusEnum,
   PurchaseStatusEnum,
@@ -24,9 +25,10 @@ import { InsurancePackage } from './insurance-packages.schema';
 export class Transaction extends Model {
   @Prop({
     type: MongooseSchema.Types.ObjectId,
+    ref: () => User.name,
     index: true,
     sparse: true,
-    ref: () => User.name,
+    required: false,
   })
   userId?: string;
 
@@ -99,8 +101,8 @@ export class Transaction extends Model {
   @Prop({ type: Number, required: false })
   triggerThreshold?: number;
 
-  @Prop({ type: String, required: false })
-  riskType?: string;
+  @Prop({ type: String, enum: InsuredRiskTypeEnum, required: false })
+  riskType?: InsuredRiskTypeEnum;
 
   @Prop({
     type: Object,
@@ -144,7 +146,7 @@ export class Transaction extends Model {
   @Prop({ type: Object })
   metadata?: Record<string, any>;
 
-  user: User;
+  user?: User;
 }
 
 export const TransactionSchema = SchemaFactory.createForClass(Transaction);

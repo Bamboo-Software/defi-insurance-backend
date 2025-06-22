@@ -1,8 +1,4 @@
-import {
-  IsNotEmpty,
-  IsOptional,
-  IsString,
-} from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateInsuranceTransactionRequestDto {
   @IsNotEmpty()
@@ -16,4 +12,12 @@ export class CreateInsuranceTransactionRequestDto {
   @IsOptional()
   @IsString()
   purchaseTxHash?: string;
+
+  @IsOptional()
+  @IsNumber()
+  latitude?: number;
+
+  @IsOptional()
+  @IsNumber()
+  longitude?: number;
 }

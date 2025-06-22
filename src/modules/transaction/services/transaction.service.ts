@@ -37,11 +37,11 @@ export class TransactionService {
       orderField,
       orderDirection,
       type,
+      walletAddress,
     } = data;
-    const user = ContextProvider.getAuthUser();
 
     const filter: any = {
-      userId: user.id,
+      ...(walletAddress ? { walletAddress } : {}),
       ...(type ? { type } : { type: TransactionTypeEnum.INSURANCE_PURCHASE }),
       ...(startTime || endTime
         ? {
@@ -80,25 +80,50 @@ export class TransactionService {
   async createInsuranceTransaction(
     payload: CreateInsuranceTransactionRequestDto,
   ): Promise<TransactionDto> {
-    const user = ContextProvider.getAuthUser();
-    const insurancePackage = await this.insurancePackageRepo.findById(
-      payload.packageId,
-    );
+    const { packageId, walletAddress, latitude, longitude, purchaseTxHash } =
+      payload;
+    const insurancePackage =
+      await this.insurancePackageRepo.findById(packageId);
     if (!insurancePackage) {
       throw new NotFoundException('Insurance package not found');
     }
+
+    const purchaseAt = new Date();
+    const insuredPeriodEnd = new Date(purchaseAt);
+    insuredPeriodEnd.setDate(
+      purchaseAt.getDate() + insurancePackage.durationDays,
+    );
+
     const tx = await this.transactionRepo.create({
-      userId: user.id,
       type: TransactionTypeEnum.INSURANCE_PURCHASE,
       purchaseStatus: PurchaseStatusEnum.AWAITING_PAYMENT,
       payoutStatus: PayoutStatusEnum.PENDING,
       packageId: insurancePackage.id,
-      walletAddress: payload.walletAddress,
+      walletAddress,
       paidAmount: insurancePackage.price,
       payoutAmount: insurancePackage.payoutAmount,
-      triggerThreshold: insurancePackage.triggerThreshold,
       cryptoCurrency: insurancePackage.cryptoCurrency,
       chain: insurancePackage.chain,
+      triggerThreshold: insurancePackage.triggerThreshold,
+      riskType: insurancePackage.riskType,
+      insuredPeriod: {
+        start: purchaseAt,
+        end: insuredPeriodEnd,
+      },
+      locationSnapshot: {
+        province: insurancePackage.region.province,
+        coordinates: {
+          lat: latitude,
+          lng: longitude,
+        },
+      },
+      purchaseAt,
+      expiresAt: insuredPeriodEnd,
+      purchaseTxHash,
+      metadata: {
+        walletAddress,
+        packageName: insurancePackage.name,
+      },
     });
     return new TransactionDto(tx);
   }
