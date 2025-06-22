@@ -6,3 +6,4 @@ export * from './jwt';
 export * from './mail';
 export * from './s3';
 export * from './centrifugo';
+export * from './avalanche';
