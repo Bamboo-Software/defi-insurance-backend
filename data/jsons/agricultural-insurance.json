@@ -1,244 +1,146 @@
 [
   {
-    "title": "Subscribe to YouTube Channel",
-    "description": "Subscribe to our YouTube channel and earn points.",
-    "frequency": "permanent",
-    "pointsReward": 6000,
-    "type": "social",
-    "socialTaskType": "youtube_subscribe",
-    "actionUrl": "https://www.youtube.com/@juniper-fox",
-    "active": true,
-    "rewardDetails": "6,000 points"
+    "name": "Rainfall Protection Plan",
+    "description": "Covers rice crops against excessive rainfall in the Mekong Delta.",
+    "riskType": "rainfall",
+    "region": {
+      "province": "Kien Giang",
+      "coordinates": {
+        "lat": 10.0097,
+        "lng": 105.1259
+      }
+    },
+    "durationDays": 90,
+    "cryptoCurrency": "USDC",
+    "chain": "avalanche",
+    "price": 80,
+    "payoutAmount": 800,
+    "unit": "USD",
+    "triggerThreshold": 200,
+    "triggerCondition": "greater_than",
+    "triggerMetric": "rainfall",
+    "triggerUnit": "mm",
+    "triggerWindowDays": 14,
+    "active": true
   },
   {
-    "title": "Watch a YouTube Video",
-    "description": "Watch the full video and earn rewards.",
-    "frequency": "daily",
-    "pointsReward": 2000,
-    "type": "social",
-    "socialTaskType": "youtube_watch",
-    "actionUrl": "https://youtu.be/IPQbb1Wk3EQ?si=X-oasO1O8DS1knGf",
-    "active": true,
-    "rewardDetails": "2,000 points"
+    "name": "Drought Defense Package",
+    "description": "Protects coffee crops from prolonged drought in the Central Highlands.",
+    "riskType": "drought",
+    "region": {
+      "province": "Lam Dong",
+      "coordinates": {
+        "lat": 11.9404,
+        "lng": 108.4583
+      }
+    },
+    "durationDays": 120,
+    "cryptoCurrency": "USDC",
+    "chain": "avalanche",
+    "price": 100,
+    "payoutAmount": 1000,
+    "unit": "USD",
+    "triggerThreshold": 50,
+    "triggerCondition": "less_than",
+    "triggerMetric": "rainfall",
+    "triggerUnit": "mm",
+    "triggerWindowDays": 30,
+    "active": true
   },
   {
-    "title": "Follow on X",
-    "description": "Follow our official X account to get points.",
-    "frequency": "permanent",
-    "pointsReward": 6000,
-    "type": "social",
-    "socialTaskType": "x_follow",
-    "actionUrl": "https://x.com/juniperfox_",
-    "active": true,
-    "rewardDetails": "6,000 points"
+    "name": "Flood Safeguard Plan",
+    "description": "Compensates for flood damage to rice fields in the Red River Delta.",
+    "riskType": "flood",
+    "region": {
+      "province": "Hung Yen",
+      "coordinates": {
+        "lat": 20.6467,
+        "lng": 106.0511
+      }
+    },
+    "durationDays": 60,
+    "cryptoCurrency": "USDC",
+    "chain": "avalanche",
+    "price": 70,
+    "payoutAmount": 700,
+    "unit": "USD",
+    "triggerThreshold": 1.2,
+    "triggerCondition": "greater_than",
+    "triggerMetric": "water_level",
+    "triggerUnit": "meters",
+    "triggerWindowDays": 7,
+    "active": true
   },
   {
-    "title": "Follow on Instagram",
-    "description": "Follow our official Instagram account to earn points.",
-    "frequency": "permanent",
-    "pointsReward": 6000,
-    "type": "social",
-    "socialTaskType": "instagram_follow",
-    "actionUrl": "https://www.instagram.com/juniper.fox007",
-    "active": true,
-    "rewardDetails": "6,000 points"
+    "name": "Storm Resistance Package",
+    "description": "Covers crop losses from typhoons in coastal areas.",
+    "riskType": "storm",
+    "region": {
+      "province": "Thua Thien Hue",
+      "coordinates": {
+        "lat": 16.4674,
+        "lng": 107.5905
+      }
+    },
+    "durationDays": 90,
+    "cryptoCurrency": "USDC",
+    "chain": "avalanche",
+    "price": 90,
+    "payoutAmount": 900,
+    "unit": "USD",
+    "triggerThreshold": 90,
+    "triggerCondition": "greater_than_or_equal",
+    "triggerMetric": "wind_speed",
+    "triggerUnit": "km/h",
+    "triggerWindowDays": 3,
+    "active": true
   },
   {
-    "title": "Join Telegram Channel",
-    "description": "Join our official Telegram community and earn points.",
-    "frequency": "permanent",
-    "pointsReward": 6000,
-    "type": "social",
-    "socialTaskType": "telegram_join",
-    "actionUrl": "https://t.me/JFOXCommunity",
-    "active": true,
-    "rewardDetails": "6,000 points"
+    "name": "One-Day Rain Test",
+    "description": "Tests coverage for heavy rain in a single day in Hanoi.",
+    "riskType": "rainfall",
+    "region": {
+      "province": "Hanoi",
+      "coordinates": {
+        "lat": 21.0285,
+        "lng": 105.8542
+      }
+    },
+    "durationDays": 1,
+    "cryptoCurrency": "USDC",
+    "chain": "avalanche",
+    "price": 10,
+    "payoutAmount": 100,
+    "unit": "USD",
+    "triggerThreshold": 40,
+    "triggerCondition": "greater_than",
+    "triggerMetric": "rainfall",
+    "triggerUnit": "mm",
+    "triggerWindowDays": 1,
+    "active": true
   },
   {
-    "title": "Watch TikTok Video",
-    "description": "Watch our TikTok video and earn rewards.",
-    "frequency": "daily",
-    "pointsReward": 2000,
-    "type": "social",
-    "socialTaskType": "tiktok_watch",
-    "actionUrl": "https://www.tiktok.com/@juniper.fox007/video/7450532481347980586?_r=1&_t=ZS-8sOLxb0huWg",
-    "active": true,
-    "rewardDetails": "2,000 points"
-  },
-  {
-    "title": "Visit Official Website",
-    "description": "Visit our official website to learn more about the project.",
-    "frequency": "weekly",
-    "pointsReward": 2000,
-    "type": "social",
-    "socialTaskType": "visit_website",
-    "actionUrl": "https://juniperfox.ai",
-    "active": true,
-    "rewardDetails": "2,000 points"
-  },
-  {
-    "title": "Like post on X",
-    "description": "Like our official post on X to earn points.",
-    "frequency": "permanent",
-    "pointsReward": 1000,
-    "type": "social",
-    "socialTaskType": "x_like",
-    "actionUrl": "https://x.com/juniperfox_/status/1887069268849885470",
-    "active": true,
-    "rewardDetails": "1,000 points"
-  },
-  {
-    "title": "Comment on post on X",
-    "description": "Comment on our official post on X to earn points.",
-    "frequency": "daily",
-    "pointsReward": 1000,
-    "type": "social",
-    "socialTaskType": "x_comment",
-    "actionUrl": "https://x.com/juniperfox_/status/1887069268849885470",
-    "active": true,
-    "rewardDetails": "1,000 points"
-  },
-  {
-    "title": "Share post on X",
-    "description": "Share or retweet our post on X to earn points.",
-    "frequency": "permanent",
-    "pointsReward": 3000,
-    "type": "social",
-    "socialTaskType": "x_share",
-    "actionUrl": "https://x.com/juniperfox_/status/1887069268849885470",
-    "active": true,
-    "rewardDetails": "3,000 points"
-  },
-  {
-    "title": "Like post on X",
-    "description": "Like our official post on X to earn points.",
-    "frequency": "permanent",
-    "pointsReward": 1000,
-    "type": "social",
-    "socialTaskType": "x_like",
-    "actionUrl": "https://x.com/juniperfox_/status/1906719990298157462",
-    "active": true,
-    "rewardDetails": "1,000 points"
-  },
-  {
-    "title": "Comment on post on X",
-    "description": "Comment on our official post on X to earn points.",
-    "frequency": "daily",
-    "pointsReward": 1000,
-    "type": "social",
-    "socialTaskType": "x_comment",
-    "actionUrl": "https://x.com/juniperfox_/status/1906719990298157462",
-    "active": true,
-    "rewardDetails": "1,000 points"
-  },
-  {
-    "title": "Share post on X",
-    "description": "Share or retweet our post on X to earn points.",
-    "frequency": "permanent",
-    "pointsReward": 3000,
-    "type": "social",
-    "socialTaskType": "x_share",
-    "actionUrl": "https://x.com/juniperfox_/status/1906719990298157462",
-    "active": true,
-    "rewardDetails": "3,000 points"
-  },
-  {
-    "title": "Like post on Instagram",
-    "description": "Like our official post on Instagram to earn points.",
-    "frequency": "permanent",
-    "pointsReward": 1000,
-    "type": "social",
-    "socialTaskType": "instagram_like",
-    "actionUrl": "https://www.instagram.com/p/DHEKBs3ShpT",
-    "active": true,
-    "rewardDetails": "1,000 points"
-  },
-  {
-    "title": "Comment on post on Instagram",
-    "description": "Comment on our official post on Instagram to earn points.",
-    "frequency": "daily",
-    "pointsReward": 1000,
-    "type": "social",
-    "socialTaskType": "instagram_comment",
-    "actionUrl": "https://www.instagram.com/p/DHEKBs3ShpT",
-    "active": true,
-    "rewardDetails": "1,000 points"
-  },
-  {
-    "title": "Like post on Instagram",
-    "description": "Like our official post on Instagram to earn points.",
-    "frequency": "permanent",
-    "pointsReward": 1000,
-    "type": "social",
-    "socialTaskType": "instagram_like",
-    "actionUrl": "https://www.instagram.com/p/DH3k3tWyEH6",
-    "active": true,
-    "rewardDetails": "1,000 points"
-  },
-  {
-    "title": "Comment on post on Instagram",
-    "description": "Comment on our official post on Instagram to earn points.",
-    "frequency": "daily",
-    "pointsReward": 1000,
-    "type": "social",
-    "socialTaskType": "instagram_comment",
-    "actionUrl": "https://www.instagram.com/p/DH3k3tWyEH6",
-    "active": true,
-    "rewardDetails": "1,000 points"
-  },
-  {
-    "title": "Like a YouTube Video",
-    "description": "Like the video to earn rewards.",
-    "frequency": "permanent",
-    "pointsReward": 1000,
-    "type": "social",
-    "socialTaskType": "youtube_like",
-    "actionUrl": "https://youtu.be/6Yv_o3ldPlw?si=drvhOMF3rNxPVPQv",
-    "active": true,
-    "rewardDetails": "1,000 points"
-  },
-  {
-    "title": "Comment on a YouTube Video",
-    "description": "Leave a comment on the video to earn rewards.",
-    "frequency": "daily",
-    "pointsReward": 1000,
-    "type": "social",
-    "socialTaskType": "youtube_comment",
-    "actionUrl": "https://youtu.be/6Yv_o3ldPlw?si=drvhOMF3rNxPVPQv",
-    "active": true,
-    "rewardDetails": "1,000 points"
-  },
-  {
-    "title": "Like a TikTok Video",
-    "description": "Like our TikTok video and earn rewards.",
-    "frequency": "permanent",
-    "pointsReward": 1000,
-    "type": "social",
-    "socialTaskType": "tiktok_like",
-    "actionUrl": "https://www.tiktok.com/@juniper.fox007/video/7460746644493978923",
-    "active": true,
-    "rewardDetails": "1,000 points"
-  },
-  {
-    "title": "Comment on a TikTok Video",
-    "description": "Leave a comment on our TikTok video and earn rewards.",
-    "frequency": "daily",
-    "pointsReward": 1000,
-    "type": "social",
-    "socialTaskType": "tiktok_comment",
-    "actionUrl": "https://www.tiktok.com/@juniper.fox007/video/7460746644493978923",
-    "active": true,
-    "rewardDetails": "1,000 points"
-  },
-  {
-    "title": "Repost a TikTok Video",
-    "description": "Repost our TikTok video to your profile and earn rewards.",
-    "frequency": "permanent",
-    "pointsReward": 3000,
-    "type": "social",
-    "socialTaskType": "tiktok_share",
-    "actionUrl": "https://www.tiktok.com/@juniper.fox007/video/7460746644493978923",
-    "active": true,
-    "rewardDetails": "3,000 points"
+    "name": "One-Day Heat Test",
+    "description": "Tests coverage for extreme heat in a single day in Hanoi.",
+    "riskType": "drought",
+    "region": {
+      "province": "Hanoi",
+      "coordinates": {
+        "lat": 21.0285,
+        "lng": 105.8542
+      }
+    },
+    "durationDays": 1,
+    "cryptoCurrency": "USDC",
+    "chain": "avalanche",
+    "price": 12,
+    "payoutAmount": 120,
+    "unit": "USD",
+    "triggerThreshold": 35,
+    "triggerCondition": "greater_than",
+    "triggerMetric": "temperature",
+    "triggerUnit": "Celsius",
+    "triggerWindowDays": 1,
+    "active": true
   }
 ]

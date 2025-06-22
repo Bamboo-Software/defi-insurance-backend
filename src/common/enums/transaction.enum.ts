@@ -41,4 +41,5 @@ export const blockchainToProviderMap: Record<
 > = {
   [BlockchainNameEnum.ethereum]: PaymentProviderEnum.Metamask,
   [BlockchainNameEnum.solana]: PaymentProviderEnum.Phantom,
+  [BlockchainNameEnum.avalanche]: PaymentProviderEnum.Metamask,
 };

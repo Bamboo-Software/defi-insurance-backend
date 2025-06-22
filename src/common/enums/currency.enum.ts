@@ -21,6 +21,7 @@ export enum CryptoCurrencyEnum {
 export enum BlockchainNameEnum {
   ethereum = 'ethereum',
   solana = 'solana',
+  avalanche = 'avalanche',
   //...
 }
 
