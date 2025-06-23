@@ -36,16 +36,6 @@ export class LoginSocialRequestDto {
   @IsOptional()
   refreshToken?: string;
 
-  @ApiProperty({
-    example:
-      'user=%7B%22id%22%3A308131758%2C%22first_name%22%3A%22ALEX%22%2C%22last_name%22%3A%22IVANNIKOV.PRO%22%2C%22username%22%3A%22ivannikovPro%22%2C%22language_code%22%3A%22ru%22%2C%22allows_write_to_pm%22%3Atrue%7D&chat_instance=-1857114464680496286&chat_type=private&auth_date=1716232213&hash=7d31991a605ab5e265b40ebbccc09c28bfb59366d2ac5cee9ca288c24a2ed3c3',
-    description: 'Init data from TMA',
-  })
-  @ValidateIf((o) => o.socialType === SocialTypeEnum.Telegram)
-  @IsNotEmpty()
-  @IsString()
-  telegramInitData?: string;
-
   @ApiPropertyOptional({
     example: 'wallet_address',
     description: 'Optional wallet address for login with wallet',

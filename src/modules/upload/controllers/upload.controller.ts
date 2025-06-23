@@ -15,9 +15,9 @@ import { FileDto } from '@/common';
 import { StorageTypeEnum } from '@/common/enums';
 import { UploadService } from '../services/upload.service';
 
-@ApiTags('Upload')
+@ApiTags('upload')
+@Controller('upload')
 @UseGuardAuth()
-@Controller('/upload')
 export class UploadController {
   constructor(private readonly uploadService: UploadService) {}
 

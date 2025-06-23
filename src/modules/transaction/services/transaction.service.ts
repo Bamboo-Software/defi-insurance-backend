@@ -80,8 +80,14 @@ export class TransactionService {
   async createInsuranceTransaction(
     payload: CreateInsuranceTransactionRequestDto,
   ): Promise<TransactionDto> {
-    const { packageId, walletAddress, latitude, longitude, purchaseTxHash } =
-      payload;
+    const {
+      packageId,
+      walletAddress,
+      latitude,
+      longitude,
+      purchaseTxHash,
+      startDate,
+    } = payload;
     const insurancePackage =
       await this.insurancePackageRepo.findById(packageId);
     if (!insurancePackage) {
@@ -89,9 +95,10 @@ export class TransactionService {
     }
 
     const purchaseAt = new Date();
-    const insuredPeriodEnd = new Date(purchaseAt);
+    const insuredPeriodStart = startDate || purchaseAt;
+    const insuredPeriodEnd = new Date(insuredPeriodStart);
     insuredPeriodEnd.setDate(
-      purchaseAt.getDate() + insurancePackage.durationDays,
+      insuredPeriodStart.getDate() + insurancePackage.durationDays,
     );
 
     const tx = await this.transactionRepo.create({
@@ -107,7 +114,7 @@ export class TransactionService {
       triggerThreshold: insurancePackage.triggerThreshold,
       riskType: insurancePackage.riskType,
       insuredPeriod: {
-        start: purchaseAt,
+        start: insuredPeriodStart,
         end: insuredPeriodEnd,
       },
       locationSnapshot: {

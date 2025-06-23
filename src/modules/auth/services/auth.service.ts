@@ -56,7 +56,7 @@ export class AuthService {
     const authFactory = AuthFactory.create(creds.socialType);
 
     const authInfo: IUser = await authFactory.getUserInfo(
-      creds.accessToken || creds.walletAddress || creds.telegramInitData,
+      creds.accessToken || creds.walletAddress,
       creds.signature,
       creds.message,
     );

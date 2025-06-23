@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsDate, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateInsuranceTransactionRequestDto {
   @IsNotEmpty()
@@ -20,4 +20,8 @@ export class CreateInsuranceTransactionRequestDto {
   @IsOptional()
   @IsNumber()
   longitude?: number;
+
+  @IsOptional()
+  @IsDate()
+  startDate?: Date;
 }
