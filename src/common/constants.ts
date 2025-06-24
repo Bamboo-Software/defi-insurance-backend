@@ -1,6 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 export const AGRICULTURAL_INSURANCE_DATA = require('../../data/jsons/agricultural-insurance.json');
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const AVALANCHE_DEFI_INSURANCE_CONTRACT_ABI = require('../../data/jsons/avalanche-defi-insurance-contract.json');
+
 export const USER_ACTIVATION_EXPIRATION =
   Number(process.env.USER_ACTIVATION_EXPIRATION) || 6; // Email verification expiration - 6 hours
 export const MAX_FAILED_VERIFY_ATTEMPTS =
@@ -16,3 +19,7 @@ export const FORGOT_PASSWORD_EXPIRATION =
 export const TOP_RANK_THRESHOLD = Number(process.env.TOP_RANK_THRESHOLD) || 100;
 export const SOLANA_TRANSACTION_FEE_MIN_BALANCE =
   Number(process.env.SOLANA_TRANSACTION_FEE_MIN_BALANCE) || 1000000;
+
+// Smart Contract Abi
+export const AVALANCHE_DEFI_INSURANCE_CONTRACT_ABI_DATA =
+  AVALANCHE_DEFI_INSURANCE_CONTRACT_ABI;

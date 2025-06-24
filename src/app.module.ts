@@ -8,6 +8,7 @@ import { TransactionModule } from './modules/transaction/transaction.module';
 import { UploadModule } from './modules/upload/upload.module';
 import { RealtimeModule } from './modules/realtime/realtime.module';
 import { InsurancePackageModule } from './modules/insurance-package/insurance-package.module';
+import { SmartContractModule } from './modules/smart-contract/smart-contract.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { InsurancePackageModule } from './modules/insurance-package/insurance-pa
     UploadModule,
     RealtimeModule,
     InsurancePackageModule,
+    SmartContractModule,
   ],
   controllers: [],
   providers: [],
