@@ -70,22 +70,22 @@ export class AvalancheContractService {
       console.log('Transaction Hash:', event.transactionHash);
     });
 
-    this.contract.on(
-      'WeatherResponse',
-      (
-        requestId: string,
-        weatherData: string,
-        response: any,
-        error: any,
-        event: any,
-      ) => {
-        console.log(`Weather Response: requestId=${requestId}`);
-        console.log('Weather Data:', weatherData);
-        console.log('Response:', response);
-        console.log('Error:', error);
-        console.log('Transaction Hash:', event.log.transactionHash);
-      },
-    );
+    // this.contract.on(
+    //   'WeatherResponse',
+    //   (
+    //     requestId: string,
+    //     weatherData: string,
+    //     response: any,
+    //     error: any,
+    //     event: any,
+    //   ) => {
+    //     console.log(`Weather Response: requestId=${requestId}`);
+    //     console.log('Weather Data:', weatherData);
+    //     console.log('Response:', response);
+    //     console.log('Error:', error);
+    //     console.log('Transaction Hash:', event.log.transactionHash);
+    //   },
+    // );
 
     this.provider.on('error', (error) => {
       this.logger.error('Lỗi WebSocketProvider:', error);
