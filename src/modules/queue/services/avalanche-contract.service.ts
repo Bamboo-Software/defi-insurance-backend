@@ -15,6 +15,9 @@ import {
   TransactionTypeEnum,
 } from '../../../common';
 import { avalancheConfig } from '../../../config';
+import { IWeatherParams } from '../interfaces/IWeather';
+import { WeatherDataRepository } from '../../database/repositories/weather-data.repository';
+import { IProcessPayout } from '../interfaces/IProcessPayout';
 
 const USDC_DECIMALS = 6;
 const LOCATION_COORDINATE_SCALING_FACTOR = 1_000_000;
@@ -26,6 +29,7 @@ export class HandleAvalancheContractService {
   constructor(
     private readonly transactionRepo: TransactionRepository,
     private readonly insurancePackageRepo: InsurancePackageRepository,
+    private readonly weatherDataRepo: WeatherDataRepository,
   ) {}
 
   async handleBuyInsurance(
@@ -126,5 +130,37 @@ export class HandleAvalancheContractService {
     this.logger.log(
       `Successfully processed and saved transaction for hash ${purchaseTxHash}`,
     );
+  }
+
+  async fetchWeatherData(payload: IWeatherParams) {
+    this.logger.log(
+      `Handling FetchWeatherData event: ${payload}`,
+    );
+    if (!payload) return;
+    if (typeof payload === 'string') {
+      payload = JSON.parse(payload);
+    }
+    const weather = await this.weatherDataRepo.create({
+      lat: payload.lat,
+      lng: payload.lng,
+      temperature: payload.temperature,
+      rainIntensity: payload.rainIntensity,
+      precipitationProbability: payload.precipitationProbability,
+      humidity: payload.humidity,
+      windSpeed: payload.windSpeed,
+      timestamp: payload.timestamp,
+    });
+    this.logger.log('Weather data saved to DB', weather);
+  }
+
+  async processPayout(payload: IProcessPayout) {
+    this.logger.log(`Handling processPayout event: ${JSON.stringify(payload)}`);
+    // Update transaction theo claimId
+    await this.transactionRepo.findByIdAndUpdate(payload.claimId, {
+      payoutStatus: PayoutStatusEnum.PAID,
+      payoutAt: new Date(),
+      payoutTxHash: payload.txHash,
+    });
+    this.logger.log(`Transaction ${payload.claimId} updated as PAID`);
   }
 }

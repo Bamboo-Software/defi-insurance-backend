@@ -28,4 +28,16 @@ export class AvalancheContractController {
     );
     this.handleAvalancheContractService.handleBuyInsurance(payload);
   }
+
+  @OnEvent(AvalancheEventEnum.FetchWeatherData)
+  fetchWeatherData(payload: any) {
+    this.logger.log('fetchWeatherData payload: ' + JSON.stringify(payload));
+    this.handleAvalancheContractService.fetchWeatherData(payload);
+  }
+
+  @OnEvent(AvalancheEventEnum.ProcessPayout)
+  processPayout(payload: any) {
+    this.logger.log('processPayout payload: ' + JSON.stringify(payload));
+    this.handleAvalancheContractService.processPayout(payload);
+  }
 }

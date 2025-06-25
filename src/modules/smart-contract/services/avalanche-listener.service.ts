@@ -79,14 +79,33 @@ export class AvalancheListenerService implements OnModuleInit {
         this.logger.log(`  Weather Data: ${weatherData}`);
         if (response) this.logger.log(`  Response: ${response}`);
         if (error) this.logger.error(`  Error: ${error}`);
+        this.eventEmitter.emit(
+          AvalancheEventEnum.FetchWeatherData,
+          weatherData,
+        );
       },
     );
 
     this.contract.on(
       'WeatherDataRequested',
       (requestId: string, lat: bigint, lon: bigint, event: any) => {
-        console.log(event);
-        console.log(requestId, lat, lon);
+        this.logger.log('WeatherDataRequested', requestId, lat, lon);
+      },
+    );
+
+    this.contract.on(
+      'PayoutProcessed',
+      (user: string, claimId: string, amount: bigint, tokenType: string, event: any) => {
+        this.logger.log(
+          `PayoutProcessed: user=${user}, claimId=${claimId}, amount=${amount}, tokenType=${tokenType}`,
+        );
+        this.eventEmitter.emit(AvalancheEventEnum.ProcessPayout, {
+          user,
+          claimId,
+          amount: amount.toString(),
+          tokenType,
+          txHash: event?.transactionHash,
+        });
       },
     );
 

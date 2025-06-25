@@ -1,18 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import {
-  InsurancePackage,
-  InsurancePackageDocument,
-} from '../schemas/insurance-packages.schema';
+import { InsurancePackage } from '../schemas/insurance-package.schema';
 import { Repository } from './Repository';
 
 @Injectable()
-export class InsurancePackageRepository extends Repository<InsurancePackageDocument> {
+export class InsurancePackageRepository extends Repository<InsurancePackage> {
   constructor(
     @InjectModel(InsurancePackage.name)
-    private readonly insurancePackageModel: Model<InsurancePackageDocument>,
+    private readonly model: Model<InsurancePackage>,
   ) {
-    super(insurancePackageModel);
+    super(model);
   }
 }

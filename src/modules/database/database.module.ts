@@ -8,6 +8,7 @@ import {
   UserOtpRepository,
   UserRepository,
   UserSocialRepository,
+  WeatherDataRepository,
 } from './repositories';
 import { MongooseModule } from '@nestjs/mongoose';
 import { mongoConfig } from '@/config';
@@ -25,11 +26,13 @@ import {
   UserSchema,
   UserSocial,
   UserSocialSchema,
+  WeatherData,
+  WeatherDataSchema,
 } from './schemas';
 import {
   InsurancePackage,
   InsurancePackageSchema,
-} from './schemas/insurance-packages.schema';
+} from './schemas/insurance-package.schema';
 
 const repositories = [
   LogRepository,
@@ -40,6 +43,7 @@ const repositories = [
   CryptoWalletRepository,
   FileRepository,
   InsurancePackageRepository,
+  WeatherDataRepository,
 ];
 
 @Global()
@@ -55,6 +59,7 @@ const repositories = [
       { name: CryptoWallet.name, schema: CryptoWalletSchema },
       { name: File.name, schema: FileSchema },
       { name: InsurancePackage.name, schema: InsurancePackageSchema },
+      { name: WeatherData.name, schema: WeatherDataSchema },
     ]),
   ],
   controllers: [],

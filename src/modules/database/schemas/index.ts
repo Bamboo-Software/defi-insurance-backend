@@ -5,4 +5,5 @@ export * from './user-social.schema';
 export * from './user-otp.schema';
 export * from './crypto-wallet.schema';
 export * from './file.schema';
-export * from './insurance-packages.schema';
+export * from './insurance-package.schema';
+export * from './weather-data.schema';

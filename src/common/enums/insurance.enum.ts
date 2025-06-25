@@ -15,9 +15,9 @@ export enum TriggerConditionEnum {
 }
 
 export enum TriggerMetricEnum {
-  RAINFALL = 'rainfall',
+  RAIN_INTENSITY = 'rainIntensity',
   TEMPERATURE = 'temperature',
   HUMIDITY = 'humidity',
-  WIND_SPEED = 'wind_speed',
-  WATER_LEVEL = 'water_level',
+  WIND_SPEED = 'windSpeed',
+  WATER_LEVEL = 'waterLevel',
 }

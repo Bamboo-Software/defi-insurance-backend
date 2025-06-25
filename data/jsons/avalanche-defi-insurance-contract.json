@@ -455,6 +455,13 @@
   },
   {
     "inputs": [],
+    "name": "fetchWeatherData",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "getAllActiveLocations",
     "outputs": [
       {

@@ -12,7 +12,7 @@ import {
   TransactionTypeEnum,
 } from '../../../common/enums';
 import { User } from './user.schema';
-import { InsurancePackage } from './insurance-packages.schema';
+import { InsurancePackage } from './insurance-package.schema';
 
 @Schema({
   collection: 'transactions',
@@ -105,14 +105,20 @@ export class Transaction extends Model {
   riskType?: InsuredRiskTypeEnum;
 
   @Prop({
-    type: Object,
+    type: {
+      province: { type: String },
+      coordinates: {
+        lat: { type: Number, index: true, sparse: true },
+        lng: { type: Number, index: true, sparse: true },
+      },
+    },
     required: false,
   })
   locationSnapshot?: {
     province: string;
     coordinates: {
-      lat: number;
-      lng: number;
+      lat?: number;
+      lng?: number;
     };
   };
 

@@ -7,7 +7,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "lottery-backend",
+            "name": "defi-insurance-backend",
             "runtimeExecutable": "npm",
             "runtimeArgs": [
               "run",

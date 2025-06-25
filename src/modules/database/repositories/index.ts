@@ -6,3 +6,4 @@ export * from './user-otp.repository';
 export * from './crypto-wallet.repository';
 export * from './file.repository';
 export * from './insurance-package.repository';
+export * from './weather-data.repository';
