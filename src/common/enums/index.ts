@@ -8,3 +8,4 @@ export * from './storage-type.enum';
 export * from './event-bus.enum';
 export * from './realtime-event.enum';
 export * from './insurance.enum';
+export * from './contract-event.enum';

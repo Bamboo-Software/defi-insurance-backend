@@ -1,10 +1,16 @@
 import { Module } from '@nestjs/common';
-import { AvalancheContractService } from './services/avalanche-contract.service';
+import { AvalancheInteractionService } from './services/avalanche-interaction.service';
+import { AvalancheProviderService } from './services/avalanche-provider.service';
+import { AvalancheListenerService } from './services/avalanche-listener.service';
 
 @Module({
   imports: [],
   controllers: [],
-  providers: [AvalancheContractService],
-  exports: [AvalancheContractService],
+  providers: [
+    AvalancheProviderService,
+    AvalancheListenerService,
+    AvalancheInteractionService,
+  ],
+  exports: [AvalancheInteractionService],
 })
 export class SmartContractModule {}

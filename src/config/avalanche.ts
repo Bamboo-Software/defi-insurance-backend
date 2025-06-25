@@ -5,6 +5,7 @@ export const avalancheConfig = {
   masterWalletPrivateKey: process.env.AVALANCHE_MASTER_WALLET_PRIVATE_KEY,
   defiInsuranceSmartContractAddress:
     process.env.AVALANCHE_DEFI_INSURANCE_SMART_CONTRACT,
+  usdcContractAddress: process.env.AVALANCHE_USDC_CONTRACT_ADDRESS,
 
   // Network configurations
   networks: {

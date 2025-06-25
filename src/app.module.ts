@@ -9,9 +9,12 @@ import { UploadModule } from './modules/upload/upload.module';
 import { RealtimeModule } from './modules/realtime/realtime.module';
 import { InsurancePackageModule } from './modules/insurance-package/insurance-package.module';
 import { SmartContractModule } from './modules/smart-contract/smart-contract.module';
+import { EventEmitterModule } from '@nestjs/event-emitter';
+import { QueueModule } from './modules/queue/queue.module';
 
 @Module({
   imports: [
+    EventEmitterModule.forRoot(),
     AuthModule,
     UserModule,
     CoreModule,
@@ -27,6 +30,7 @@ import { SmartContractModule } from './modules/smart-contract/smart-contract.mod
     RealtimeModule,
     InsurancePackageModule,
     SmartContractModule,
+    QueueModule,
   ],
   controllers: [],
   providers: [],
