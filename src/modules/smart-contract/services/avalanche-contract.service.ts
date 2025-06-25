@@ -63,28 +63,26 @@ export class AvalancheContractService {
       },
     );
 
-    this.contract.on('Log', (logType: bigint, message: string, event: any) => {
+    this.contract.on('Log', (logType: any, message: string, event: any) => {
+      console.log('Log Event:', logType, message, event);
       const logTypeStr = logType === 0n ? 'INFO' : 'ERROR';
       console.log(`[${logTypeStr}] Log Event: ${message}`);
       console.log('Transaction Hash:', event.transactionHash);
     });
 
     this.contract.on(
-      'WeatherDataRequested',
-      (requestId: string, lat: bigint, lon: bigint, event: any) => {
-        console.log(
-          `Weather Data Requested: requestId=${requestId}, lat=${lat}, lon=${lon}`,
-        );
-        console.log('Transaction Hash:', event.log.transactionHash);
-      },
-    );
-
-    this.contract.on(
-      'WeatherDataReceived',
-      (requestId: string, weatherData: string, event: any) => {
-        console.log(
-          `Weather Data Received: requestId=${requestId}, weatherData=${weatherData}`,
-        );
+      'WeatherResponse',
+      (
+        requestId: string,
+        weatherData: string,
+        response: any,
+        error: any,
+        event: any,
+      ) => {
+        console.log(`Weather Response: requestId=${requestId}`);
+        console.log('Weather Data:', weatherData);
+        console.log('Response:', response);
+        console.log('Error:', error);
         console.log('Transaction Hash:', event.log.transactionHash);
       },
     );

@@ -41,7 +41,7 @@ export class TransactionService {
     } = data;
 
     const filter: any = {
-      ...(walletAddress ? { walletAddress } : {}),
+      walletAddress,
       ...(type ? { type } : { type: TransactionTypeEnum.INSURANCE_PURCHASE }),
       ...(startTime || endTime
         ? {

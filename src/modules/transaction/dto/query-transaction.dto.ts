@@ -1,4 +1,4 @@
-import { IsEnum, IsOptional, IsString } from 'class-validator';
+import { IsEnum, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { PageOptionsDto, TransactionTypeEnum } from '../../../common';
 
 export class FindAllTransactionRequestDto extends PageOptionsDto {
@@ -7,6 +7,6 @@ export class FindAllTransactionRequestDto extends PageOptionsDto {
   type?: TransactionTypeEnum;
 
   @IsString()
-  @IsOptional()
-  walletAddress?: string;
+  @IsNotEmpty()
+  walletAddress: string;
 }
