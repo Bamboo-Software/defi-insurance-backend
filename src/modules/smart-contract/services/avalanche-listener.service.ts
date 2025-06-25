@@ -82,6 +82,14 @@ export class AvalancheListenerService implements OnModuleInit {
       },
     );
 
+    this.contract.on(
+      'WeatherDataRequested',
+      (requestId: string, lat: bigint, lon: bigint, event: any) => {
+        console.log(event);
+        console.log(requestId, lat, lon);
+      },
+    );
+
     this.logger.log('Successfully set up all event listeners.');
   }
 }

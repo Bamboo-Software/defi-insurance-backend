@@ -15,6 +15,7 @@ export enum CryptoCurrencyEnum {
   SOL = 'SOL',
   USDT = 'USDT',
   USDC = 'USDC',
+  AVAX = 'AVAX'
   //...
 }
 
