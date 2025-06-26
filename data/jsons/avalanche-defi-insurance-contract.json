@@ -315,20 +315,8 @@
       },
       {
         "indexed": false,
-        "internalType": "string",
-        "name": "character",
-        "type": "string"
-      },
-      {
-        "indexed": false,
         "internalType": "bytes",
         "name": "response",
-        "type": "bytes"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes",
-        "name": "err",
         "type": "bytes"
       }
     ],

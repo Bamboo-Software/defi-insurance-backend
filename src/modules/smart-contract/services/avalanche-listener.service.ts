@@ -1,7 +1,7 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { AvalancheProviderService } from './avalanche-provider.service';
 import { IAvalanchePaymentReceivedEvent } from '../interfaces/IAvalanchePayment';
-import { Contract } from 'ethers';
+import { Contract, toUtf8String } from 'ethers';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { AvalancheEventEnum } from '../../../common';
 
@@ -66,23 +66,12 @@ export class AvalancheListenerService implements OnModuleInit {
 
     this.contract.on(
       'WeatherResponse',
-      (
-        requestId: string,
-        weatherData: string,
-        response: any,
-        error: any,
-        event: any,
-      ) => {
+      (requestId: string, response: any, event: any) => {
         this.logger.log(
           `Weather Response for requestId=${requestId}, Tx: ${event.log.transactionHash}`,
         );
-        this.logger.log(`  Weather Data: ${weatherData}`);
-        if (response) this.logger.log(`  Response: ${response}`);
-        if (error) this.logger.error(`  Error: ${error}`);
-        this.eventEmitter.emit(
-          AvalancheEventEnum.FetchWeatherData,
-          weatherData,
-        );
+        const responseString = toUtf8String(response);
+        this.eventEmitter.emit(AvalancheEventEnum.FetchWeatherData, responseString);
       },
     );
 
@@ -95,7 +84,13 @@ export class AvalancheListenerService implements OnModuleInit {
 
     this.contract.on(
       'PayoutProcessed',
-      (user: string, claimId: string, amount: bigint, tokenType: string, event: any) => {
+      (
+        user: string,
+        claimId: string,
+        amount: bigint,
+        tokenType: string,
+        event: any,
+      ) => {
         this.logger.log(
           `PayoutProcessed: user=${user}, claimId=${claimId}, amount=${amount}, tokenType=${tokenType}`,
         );
