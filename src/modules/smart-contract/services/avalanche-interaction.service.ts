@@ -1,6 +1,8 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Contract } from 'ethers';
 import { AvalancheProviderService } from './avalanche-provider.service';
+import { TransactionRepository } from '../../database';
+import { PayoutStatusEnum } from '../../../common';
 
 interface CompactLocation {
   lat: number;
@@ -14,7 +16,10 @@ export class AvalancheInteractionService {
   private readonly readOnlyContract: Contract;
   private readonly writableContract: Contract;
 
-  constructor(private readonly providerService: AvalancheProviderService) {
+  constructor(
+    private readonly providerService: AvalancheProviderService,
+    private readonly transactionRepo: TransactionRepository,
+  ) {
     this.logger.log('Initializing AvalancheInteractionService...');
     this.readOnlyContract = this.providerService.readOnlyContract;
     this.writableContract = this.providerService.writableContract;
@@ -52,6 +57,12 @@ export class AvalancheInteractionService {
         amount,
         tokenAddress,
       );
+
+      await this.transactionRepo.findByIdAndUpdate(claimId, {
+        payoutStatus: PayoutStatusEnum.PAID,
+        payoutAt: new Date(),
+        payoutTxHash: tx.hash,
+      });
 
       this.logger.log(`Payout transaction sent. Hash: ${tx.hash}`);
       const receipt = await tx.wait();

@@ -136,7 +136,7 @@
     "price": 1.5,
     "payoutAmount": 15,
     "unit": "USD",
-    "triggerThreshold": 35,
+    "triggerThreshold": 30,
     "triggerCondition": "greater_than",
     "triggerMetric": "temperature",
     "triggerUnit": "Celsius",
