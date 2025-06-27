@@ -66,16 +66,13 @@ export class InsuranceSchedule {
       }
 
       // 4. Lấy weather data phù hợp
-      // Trừ đi 1 tiếng cộng ở FE
       windowStart = new Date(windowStart.getTime() - 60 * 60 * 1000);
-      console.log(windowStart, windowEnd);
 
       const weatherData = await this.weatherDataRepo.find({
         lat: { $gte: lat - 0.0001, $lte: lat + 0.0001 },
         lng: { $gte: lng - 0.0001, $lte: lng + 0.0001 },
         timestamp: { $gte: windowStart, $lte: windowEnd },
       });
-      console.log(weatherData);
       if (!weatherData.length) continue;
 
       // 5. Lấy giá trị metric cần so sánh
@@ -90,10 +87,8 @@ export class InsuranceSchedule {
       )
         continue;
       const values = weatherData.map((wd) => wd[metric]);
-      console.log(values);
       // Lấy giá trị lớn nhất trong window (tuỳ loại metric có thể điều chỉnh)
       const value = Math.max(...values);
-      console.log(value);
 
       // 6. So sánh điều kiện trigger
       let isTriggered = false;
@@ -117,7 +112,6 @@ export class InsuranceSchedule {
           isTriggered = value !== threshold;
           break;
       }
-      console.log(isTriggered);
 
       // 7. Nếu đủ điều kiện, cập nhật transaction và process payout
       if (isTriggered) {
