@@ -4,137 +4,570 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
-## Overview
-- [About Project](#about-project)
-- [Getting Started](#getting-started)
+## Table of Contents
+- [Overview](#overview)
+- [Requirements](#requirements)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
 - [Environment Variables](#environment-variables)
+- [Installation](#installation)
+- [Development](#development)
+- [Deployment](#deployment)
+- [API Documentation](#api-documentation)
+- [Testing](#testing)
 - [Resources](#resources)
 - [Support](#support)
-- [Stay in touch](#stay-in-touch)
 - [License](#license)
 
-## About Project
-Defi Insurance Backend is the backend system for a decentralized insurance platform, designed for transparency, security, and scalability.
+## Overview
 
-**Built with:**
-- <img src="https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white" alt="Node.js"/> [Node.js](https://nodejs.org/)
-- <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white" alt="TypeScript"/> [TypeScript](https://www.typescriptlang.org/)
-- <img src="https://img.shields.io/badge/Swagger-85EA2D?logo=swagger&logoColor=black" alt="Swagger"/> [Swagger](https://swagger.io/)
-- MongoDB
-- Docker
-- Avalanche Blockchain
+Defi Insurance Backend is a comprehensive backend system for a decentralized insurance platform, designed for transparency, security, and scalability. The platform enables users to purchase insurance policies, manage claims, and interact with smart contracts on the Avalanche blockchain.
 
-## Getting Started
+**Key Features:**
+- 🔐 Secure authentication and authorization
+- 📦 Insurance package management
+- 💰 Transaction processing and blockchain integration
+- 📄 File upload and management
+- 📧 Email notifications
+- ⏰ Scheduled tasks and background jobs
+- 🔄 Real-time updates
+- 📊 Comprehensive API documentation
 
-### Prerequisites
-- Node.js >= 18
-- Yarn
-- Docker (for containerized deployment)
+## Requirements
 
-### Installation
-If you don't have Node.js, Yarn, or Docker installed, follow these steps:
+### System Requirements
+- **Node.js**: >= 18.0.0
+- **Yarn**: >= 1.22.0
+- **MongoDB**: >= 5.0
+- **Docker**: >= 20.10 (for containerized deployment)
+- **Git**: >= 2.30
 
-#### 1. Install Node.js (v18 or higher)
-- Download and install from [nodejs.org](https://nodejs.org/)
-- Or, using nvm (Node Version Manager):
-  ```bash
-  # Install nvm if you don't have it
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
-  # Restart your terminal, then:
-  nvm install 18
-  nvm use 18
-  ```
+### Blockchain Requirements
+- **Avalanche Network**: Fuji testnet or Mainnet
+- **Web3 Provider**: RPC endpoint access
+- **Smart Contracts**: Deployed insurance contracts
+- **Wallet**: Master wallet with sufficient funds
 
-#### 2. Install Yarn
-```bash
-npm install -g yarn
+### Optional Requirements
+- **AWS S3**: For file storage
+- **SMTP Server**: For email notifications
+- **Redis**: For caching and session management
+
+## Tech Stack
+
+### Backend Framework
+- <img src="https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white" alt="Node.js"/> [Node.js](https://nodejs.org/) - Runtime environment
+- <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white" alt="TypeScript"/> [TypeScript](https://www.typescriptlang.org/) - Programming language
+- <img src="https://img.shields.io/badge/NestJS-E0234E?logo=nestjs&logoColor=white" alt="NestJS"/> [NestJS](https://nestjs.com/) - Progressive Node.js framework
+
+### Database & ORM
+- <img src="https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white" alt="MongoDB"/> [MongoDB](https://www.mongodb.com/) - NoSQL database
+- <img src="https://img.shields.io/badge/Mongoose-880000?logo=mongoose&logoColor=white" alt="Mongoose"/> [Mongoose](https://mongoosejs.com/) - MongoDB object modeling
+
+### Blockchain & Web3
+- <img src="https://img.shields.io/badge/Avalanche-E84142?logo=avalanche&logoColor=white" alt="Avalanche"/> [Avalanche](https://www.avax.network/) - Blockchain platform
+- <img src="https://img.shields.io/badge/Web3.js-F16822?logo=web3.js&logoColor=white" alt="Web3.js"/> [Web3.js](https://web3js.org/) - Ethereum JavaScript API
+- <img src="https://img.shields.io/badge/Ethers.js-363636?logo=ethers&logoColor=white" alt="Ethers.js"/> [Ethers.js](https://docs.ethers.io/) - Ethereum library
+
+### Authentication & Security
+- <img src="https://img.shields.io/badge/JWT-000000?logo=json-web-tokens&logoColor=white" alt="JWT"/> [JWT](https://jwt.io/) - JSON Web Tokens
+- <img src="https://img.shields.io/badge/Passport.js-34E27A?logo=passport&logoColor=white" alt="Passport.js"/> [Passport.js](https://www.passportjs.org/) - Authentication middleware
+- <img src="https://img.shields.io/badge/bcrypt-000000?logo=bcrypt&logoColor=white" alt="bcrypt"/> [bcrypt](https://github.com/dcodeIO/bcrypt.js/) - Password hashing
+
+### File Storage & Cloud
+- <img src="https://img.shields.io/badge/AWS_S3-569A31?logo=amazon-s3&logoColor=white" alt="AWS S3"/> [AWS S3](https://aws.amazon.com/s3/) - Object storage
+- <img src="https://img.shields.io/badge/Multer-000000?logo=multer&logoColor=white" alt="Multer"/> [Multer](https://github.com/expressjs/multer) - File upload middleware
+
+### Documentation & Testing
+- <img src="https://img.shields.io/badge/Swagger-85EA2D?logo=swagger&logoColor=black" alt="Swagger"/> [Swagger](https://swagger.io/) - API documentation
+- <img src="https://img.shields.io/badge/Jest-C21325?logo=jest&logoColor=white" alt="Jest"/> [Jest](https://jestjs.io/) - Testing framework
+
+### Development Tools
+- <img src="https://img.shields.io/badge/ESLint-4B32C3?logo=eslint&logoColor=white" alt="ESLint"/> [ESLint](https://eslint.org/) - Code linting
+- <img src="https://img.shields.io/badge/Prettier-F7B93E?logo=prettier&logoColor=white" alt="Prettier"/> [Prettier](https://prettier.io/) - Code formatting
+- <img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white" alt="Docker"/> [Docker](https://www.docker.com/) - Containerization
+
+## Project Structure
+
 ```
-
-#### 3. Install Docker
-- Download and install Docker Desktop from [docker.com](https://www.docker.com/products/docker-desktop/)
-- Or follow the [official Docker installation guide](https://docs.docker.com/get-docker/)
-
-#### 4. Clone the repository and install dependencies
-```bash
-git clone <your-repo-url>
-cd <project-folder>
-yarn install
+defi-insurance-backend/
+├── src/                          # Source code
+│   ├── config/                   # Configuration files
+│   ├── modules/                  # Feature modules
+│   │   ├── auth/                 # Authentication module
+│   │   ├── user/                 # User management
+│   │   ├── insurance-package/    # Insurance packages
+│   │   ├── transaction/          # Transaction handling
+│   │   ├── smart-contract/       # Blockchain integration
+│   │   ├── upload/               # File upload handling
+│   │   ├── realtime/             # Real-time features
+│   │   ├── schedules/            # Scheduled tasks
+│   │   ├── queue/                # Background jobs
+│   │   ├── database/             # Database operations
+│   │   └── core/                 # Core functionality
+│   ├── common/                   # Shared utilities
+│   ├── guards/                   # Route guards
+│   ├── interceptors/             # Request/response interceptors
+│   ├── filters/                  # Exception filters
+│   ├── decorators/               # Custom decorators
+│   ├── exceptions/               # Custom exceptions
+│   ├── providers/                # Service providers
+│   ├── utils/                    # Utility functions
+│   ├── app.module.ts            # Root application module
+│   ├── main.ts                  # Application entry point
+│   └── setup-swagger.ts         # Swagger configuration
+├── data/                         # Static data and templates
+│   ├── jsons/                   # JSON data files
+│   └── mail-templates/          # Email templates
+├── test/                         # Test files
+├── .vscode/                      # VS Code configuration
+├── Dockerfile                    # Docker configuration
+├── package.json                  # Dependencies and scripts
+├── tsconfig.json                # TypeScript configuration
+├── nest-cli.json                # NestJS CLI configuration
+├── .eslintrc.js                 # ESLint configuration
+├── .prettierrc                  # Prettier configuration
+└── README.md                    # Project documentation
 ```
-
-### Run with Docker
-```bash
-docker build -t defi-insurance-backend .
-docker run --env-file .env -p 3000:3000 defi-insurance-backend
-```
-
-### Development commands
-```bash
-# Run in development mode
-yarn start:dev
-# Build for production
-yarn build
-# Run in production mode
-yarn start:prod
-```
-
-### API Documentation
-After starting the server, visit: `http://localhost:3000/api/docs` for Swagger UI.
 
 ## Environment Variables
+
 Create a `.env` file in the project root with the following variables:
 
+### Application Configuration
 ```env
-# App
+# App Settings
 HOST=0.0.0.0                  # Server host address
 PORT=3000                     # Server port
 APP_URL=http://localhost:3000 # Base URL of the application
 NODE_ENV=development          # Environment (development/production)
 PREFIX_PATH=/api              # API prefix path
-SWAGGER_ENABLED=true          # Swagger enable
+SWAGGER_ENABLED=true          # Enable Swagger documentation
 APP_NAME=Defi-Insurance       # Application name
+```
 
+### Database Configuration
+```env
 # MongoDB
 MONGODB_URI=mongodb://localhost:27017/defi-insurance # MongoDB connection string
+```
 
-# Jwt config
-JWT_SECRET=defi-insurance@2025xxxyyyzzz   # JWT secret
-JWT_EXPIRES_IN=30d                        # JWT expiration time
+### Authentication & Security
+```env
+# JWT Configuration
+JWT_SECRET=your-super-secret-jwt-key-here   # JWT secret key (use strong random string)
+JWT_EXPIRES_IN=30d                          # JWT expiration time
+```
 
-# Avalanche/Blockchain
+### Blockchain Configuration
+```env
+# Avalanche Network Settings
 AVALANCHE_MASTER_WALLET_ADDRESS=           # Master wallet address
 AVALANCHE_MASTER_WALLET_PRIVATE_KEY=       # Master wallet private key
 AVALANCHE_DEFI_INSURANCE_SMART_CONTRACT=   # Insurance smart contract address
 AVALANCHE_USDC_CONTRACT_ADDRESS=           # USDC contract address
+AVALANCHE_NETWORK=mainnet                  # Network selection (mainnet/fuji)
+
+# RPC Endpoints
 AVALANCHE_FUJI_HTTPS_ENDPOINT=             # Fuji testnet RPC (https)
 AVALANCHE_FUJI_WSS_ENDPOINT=               # Fuji testnet RPC (wss)
 AVALANCHE_MAINNET_HTTPS_ENDPOINT=          # Mainnet RPC (https)
 AVALANCHE_MAINNET_WSS_ENDPOINT=            # Mainnet RPC (wss)
-AVALANCHE_NETWORK=mainnet                  # Network selection (mainnet/fuji)
 ```
+
+### Optional Services
+```env
+# AWS S3 (Optional - for file storage)
+AWS_ACCESS_KEY_ID=your-aws-access-key
+AWS_SECRET_ACCESS_KEY=your-aws-secret-key
+AWS_REGION=us-east-1
+AWS_S3_BUCKET=your-s3-bucket-name
+
+# Email Configuration (Optional)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-email-password
+```
+
+## Installation
+
+### Step 1: Prerequisites Installation
+
+#### Install Node.js (v18 or higher)
+```bash
+# Using nvm (recommended)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+source ~/.bashrc  # or source ~/.zshrc
+nvm install 18
+nvm use 18
+
+# Or download from nodejs.org
+# Visit https://nodejs.org/ and download the LTS version
+```
+
+#### Install Yarn
+```bash
+npm install -g yarn
+```
+
+#### Install MongoDB
+```bash
+# macOS (using Homebrew)
+brew tap mongodb/brew
+brew install mongodb-community
+brew services start mongodb/brew/mongodb-community
+
+# Ubuntu/Debian
+sudo apt update
+sudo apt install mongodb
+sudo systemctl start mongodb
+sudo systemctl enable mongodb
+
+# Windows
+# Download from https://www.mongodb.com/try/download/community
+```
+
+#### Install Docker (Optional)
+```bash
+# macOS/Windows
+# Download Docker Desktop from https://www.docker.com/products/docker-desktop/
+
+# Ubuntu/Debian
+sudo apt update
+sudo apt install docker.io
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo usermod -aG docker $USER
+```
+
+### Step 2: Project Setup
+
+#### Clone the Repository
+```bash
+git clone <your-repo-url>
+cd defi-insurance-backend
+```
+
+#### Install Dependencies
+```bash
+yarn install
+```
+
+#### Environment Configuration
+```bash
+# Copy environment template
+cp .env.example .env
+
+# Edit the .env file with your configuration
+nano .env  # or use your preferred editor
+```
+
+#### Database Setup
+```bash
+# Ensure MongoDB is running
+mongod --version
+
+# Create database (optional - will be created automatically)
+mongo
+use defi-insurance
+exit
+```
+
+### Step 3: Blockchain Setup
+
+#### Configure Avalanche Network
+1. Set up your Avalanche wallet
+2. Configure RPC endpoints in `.env`
+3. Deploy smart contracts (if not already deployed)
+4. Update contract addresses in `.env`
+
+## Development
+
+### Running in Development Mode
+
+#### Start Development Server
+```bash
+# Start with hot reload
+yarn start:dev
+
+# Or using npm
+npm run start:dev
+```
+
+#### Available Development Commands
+```bash
+# Development server with watch mode
+yarn start:dev
+
+# Development server with debug mode
+yarn start:debug
+
+# Build the application
+yarn build
+
+# Run production build
+yarn start:prod
+
+# Lint code
+yarn lint
+
+# Fix linting issues
+yarn lint:fix
+
+# Format code
+yarn format
+```
+
+### Development Workflow
+
+1. **Start the development server**
+   ```bash
+   yarn start:dev
+   ```
+
+2. **Access the application**
+   - API: `http://localhost:3000/api`
+   - Swagger Documentation: `http://localhost:3000/api/docs`
+
+3. **Monitor logs**
+   - Application logs will appear in the terminal
+   - Check for any errors or warnings
+
+4. **Make changes**
+   - Edit files in the `src/` directory
+   - The server will automatically restart on file changes
+
+### Code Quality
+
+#### Linting and Formatting
+```bash
+# Check for linting issues
+yarn lint
+
+# Fix automatic linting issues
+yarn lint:fix
+
+# Format code
+yarn format
+```
+
+#### Type Checking
+```bash
+# TypeScript compilation check
+yarn build
+```
+
+## Deployment
+
+### Docker Deployment
+
+#### Build Docker Image
+```bash
+# Build the image
+docker build -t defi-insurance-backend .
+
+# Tag for registry (optional)
+docker tag defi-insurance-backend your-registry/defi-insurance-backend:latest
+```
+
+#### Run with Docker
+```bash
+# Run with environment file
+docker run --env-file .env -p 3000:3000 defi-insurance-backend
+
+# Run with specific port mapping
+docker run --env-file .env -p 8080:3000 defi-insurance-backend
+
+# Run in detached mode
+docker run -d --env-file .env -p 3000:3000 --name defi-insurance defi-insurance-backend
+```
+
+#### Docker Compose (Recommended)
+Create a `docker-compose.yml` file:
+
+```yaml
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - .env
+    depends_on:
+      - mongodb
+    restart: unless-stopped
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=defi-insurance
+    volumes:
+      - mongodb_data:/data/db
+    restart: unless-stopped
+
+volumes:
+  mongodb_data:
+```
+
+Run with Docker Compose:
+```bash
+docker-compose up -d
+```
+
+### Production Deployment
+
+#### Build for Production
+```bash
+# Install production dependencies
+yarn install --production
+
+# Build the application
+yarn build
+
+# Start production server
+yarn start:prod
+```
+
+#### Environment Setup for Production
+```bash
+# Set production environment
+export NODE_ENV=production
+
+# Use PM2 for process management (optional)
+npm install -g pm2
+pm2 start dist/main.js --name "defi-insurance-backend"
+pm2 startup
+pm2 save
+```
+
+#### Reverse Proxy Setup (Nginx)
+Create an Nginx configuration:
+
+```nginx
+server {
+    listen 80;
+    server_name your-domain.com;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+```
+
+### Monitoring and Logs
+
+#### Application Monitoring
+```bash
+# Check application status
+docker ps
+
+# View application logs
+docker logs defi-insurance-backend
+
+# Follow logs in real-time
+docker logs -f defi-insurance-backend
+```
+
+#### Health Checks
+- Health endpoint: `GET /api/health`
+- Status endpoint: `GET /api/status`
+
+## API Documentation
+
+### Swagger UI
+After starting the server, visit: `http://localhost:3000/api/docs`
+
+### API Endpoints Overview
+- **Authentication**: `/api/auth/*`
+- **Users**: `/api/users/*`
+- **Insurance Packages**: `/api/insurance-packages/*`
+- **Transactions**: `/api/transactions/*`
+- **Smart Contracts**: `/api/smart-contracts/*`
+- **File Upload**: `/api/upload/*`
+
+### Authentication
+The API uses JWT-based authentication. Include the token in the Authorization header:
+```
+Authorization: Bearer <your-jwt-token>
+```
+
+## Testing
+
+### Running Tests
+```bash
+# Run all tests
+yarn test
+
+# Run tests in watch mode
+yarn test:watch
+
+# Run tests with coverage
+yarn test:cov
+
+# Run e2e tests
+yarn test:e2e
+
+# Run tests in debug mode
+yarn test:debug
+```
+
+### Test Structure
+- Unit tests: `*.spec.ts` files alongside source files
+- E2E tests: `test/` directory
+- Test configuration: `jest.config.js`
 
 ## Resources
 
-Check out a few resources that may come in handy when working with NestJS:
+### Documentation
+- [NestJS Documentation](https://docs.nestjs.com/) - Framework documentation
+- [MongoDB Documentation](https://docs.mongodb.com/) - Database documentation
+- [Avalanche Documentation](https://docs.avax.network/) - Blockchain documentation
+- [Web3.js Documentation](https://web3js.org/docs/) - Web3 library documentation
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+### Community & Support
+- [NestJS Discord](https://discord.gg/G7Qnnhy) - Community support
+- [NestJS Courses](https://courses.nestjs.com/) - Video tutorials
+- [NestJS Devtools](https://devtools.nestjs.com/) - Development tools
+
+### Deployment Resources
+- [NestJS Mau](https://mau.nestjs.com/) - AWS deployment
+- [Docker Documentation](https://docs.docker.com/) - Containerization guide
+- [Nginx Documentation](https://nginx.org/en/docs/) - Reverse proxy setup
 
 ## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Getting Help
+- **Documentation**: Check the [NestJS Documentation](https://docs.nestjs.com/)
+- **Community**: Join our [Discord channel](https://discord.gg/G7Qnnhy)
+- **Issues**: Report bugs and feature requests in the project repository
+- **Enterprise Support**: For commercial support, contact [enterprise support](https://enterprise.nestjs.com)
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Contributing
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests for new functionality
+5. Ensure all tests pass
+6. Submit a pull request
 
 ## License
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+**Built with ❤️ using [NestJS](https://nestjs.com/)**
