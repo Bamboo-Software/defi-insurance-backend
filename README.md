@@ -1,7 +1,7 @@
 # Defi Insurance Backend
 
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+  <a href="https://defi-insurance.bamboosoft.io/" target="blank"><img src="https://chromion-chainlink-hackathon.devfolio.co/_next/image?url=https%3A%2F%2Fassets.devfolio.co%2Fhackathons%2Fchromion-chainlink-hackathon%2Fprojects%2F243a76646b5e4cd985079d6224f91f94%2F00ee85a9-3c4e-4f96-87e9-cdd0f08a6d57.png&w=128&q=75" width="120" alt="Defi Insur Logo" /></a>
 </p>
 
 ## Table of Contents
@@ -21,7 +21,7 @@
 
 ## Overview
 
-Defi Insurance Backend is a comprehensive backend system for a decentralized insurance platform, designed for transparency, security, and scalability. The platform enables users to purchase insurance policies, manage claims, and interact with smart contracts on the Avalanche blockchain.
+Defi Insurance Backend is a comprehensive backend system for a decentralized insurance platform, designed for transparency, security, and scalability. The platform enables users to purchase insurance packages, manage claims, and interact with smart contracts on the Avalanche blockchain.
 
 **Key Features:**
 - 🔐 Secure authentication and authorization
@@ -48,7 +48,7 @@ Defi Insurance Backend is a comprehensive backend system for a decentralized ins
 - **Smart Contracts**: Deployed insurance contracts
 - **Wallet**: Master wallet with sufficient funds
 
-### Optional Requirements
+### Further Requirements
 - **AWS S3**: For file storage
 - **SMTP Server**: For email notifications
 - **Redis**: For caching and session management
@@ -245,7 +245,7 @@ sudo usermod -aG docker $USER
 
 #### Clone the Repository
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Bamboo-Software/defi-insurance-backend
 cd defi-insurance-backend
 ```
 
@@ -260,7 +260,7 @@ yarn install
 cp .env.example .env
 
 # Edit the .env file with your configuration
-nano .env  # or use your preferred editor
+vim .env  # or use your preferred editor
 ```
 
 #### Database Setup
@@ -279,8 +279,13 @@ exit
 #### Configure Avalanche Network
 1. Set up your Avalanche wallet
 2. Configure RPC endpoints in `.env`
-3. Deploy smart contracts (if not already deployed)
-4. Update contract addresses in `.env`
+
+## Contract Addresses
+```
+# Smartcontract
+AVALANCHE_DEFI_INSURANCE_SMART_CONTRACT=0x96C40a105c4dcA72e18a16EE511eA51bf4443685
+AVALANCHE_USDC_CONTRACT_ADDRESS=0x5425890298aed601595a70AB815c96711a31Bc65
+```
 
 ## Development
 
@@ -566,8 +571,4 @@ yarn test:debug
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-**Built with ❤️ using [NestJS](https://nestjs.com/)**
+This project is licensed under the MIT License - see the [LICENSE](https://opensource.org/license/mit) file for details.
