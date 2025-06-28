@@ -8,6 +8,7 @@
 - [Overview](#overview)
 - [Requirements](#requirements)
 - [Tech Stack](#tech-stack)
+- [Chainlink Integration](#chainlink-integration)
 - [Project Structure](#project-structure)
 - [Environment Variables](#environment-variables)
 - [Installation](#installation)
@@ -32,6 +33,9 @@ Defi Insurance Backend is a comprehensive backend system for a decentralized ins
 - ⏰ Scheduled tasks and background jobs
 - 🔄 Real-time updates
 - 📊 Comprehensive API documentation
+- 🌦️ **Chainlink Weather Data Oracles** for automated insurance triggers
+- 🤖 **Automated Payout System** using Chainlink Keepers
+- 📈 **Real-time Weather Monitoring** for agricultural insurance
 
 ## Requirements
 
@@ -47,6 +51,8 @@ Defi Insurance Backend is a comprehensive backend system for a decentralized ins
 - **Web3 Provider**: RPC endpoint access
 - **Smart Contracts**: Deployed insurance contracts
 - **Wallet**: Master wallet with sufficient funds
+- **Chainlink Oracle**: Weather data feed integration
+- **Chainlink Keepers**: Automated contract execution
 
 ### Further Requirements
 - **AWS S3**: For file storage
@@ -68,6 +74,7 @@ Defi Insurance Backend is a comprehensive backend system for a decentralized ins
 - <img src="https://img.shields.io/badge/Avalanche-E84142?logo=avalanche&logoColor=white" alt="Avalanche"/> [Avalanche](https://www.avax.network/) - Blockchain platform
 - <img src="https://img.shields.io/badge/Web3.js-F16822?logo=web3.js&logoColor=white" alt="Web3.js"/> [Web3.js](https://web3js.org/) - Ethereum JavaScript API
 - <img src="https://img.shields.io/badge/Ethers.js-363636?logo=ethers&logoColor=white" alt="Ethers.js"/> [Ethers.js](https://docs.ethers.io/) - Ethereum library
+- <img src="https://img.shields.io/badge/Chainlink-375BD2?logo=chainlink&logoColor=white" alt="Chainlink"/> [Chainlink](https://chainlinklabs.com/) - Decentralized oracle network
 
 ### Authentication & Security
 - <img src="https://img.shields.io/badge/JWT-000000?logo=json-web-tokens&logoColor=white" alt="JWT"/> [JWT](https://jwt.io/) - JSON Web Tokens
@@ -86,6 +93,72 @@ Defi Insurance Backend is a comprehensive backend system for a decentralized ins
 - <img src="https://img.shields.io/badge/ESLint-4B32C3?logo=eslint&logoColor=white" alt="ESLint"/> [ESLint](https://eslint.org/) - Code linting
 - <img src="https://img.shields.io/badge/Prettier-F7B93E?logo=prettier&logoColor=white" alt="Prettier"/> [Prettier](https://prettier.io/) - Code formatting
 - <img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white" alt="Docker"/> [Docker](https://www.docker.com/) - Containerization
+
+## Chainlink Integration
+
+This project leverages **Chainlink's decentralized oracle network** to provide reliable, tamper-proof data for automated insurance payouts. The integration includes several key components:
+
+### 🔗 **Chainlink Oracles**
+- **Weather Data Feeds**: Real-time weather information for agricultural insurance
+- **Automated Triggers**: Smart contract execution based on weather conditions
+- **Data Verification**: Tamper-proof weather data from multiple sources
+
+### 🌦️ **Weather Data Integration**
+The system uses Chainlink oracles to fetch real-time weather data including:
+- **Temperature**: Celsius readings for heat/drought insurance
+- **Rain Intensity**: Millimeter measurements for rainfall protection
+- **Wind Speed**: Kilometers per hour for storm coverage
+- **Humidity**: Percentage for comprehensive weather monitoring
+- **Precipitation Probability**: Risk assessment for agricultural planning
+
+### 🤖 **Automated Payout System**
+- **Chainlink Keepers**: Automated contract execution when conditions are met
+- **Smart Contract Triggers**: Automatic payout processing based on oracle data
+- **Real-time Monitoring**: Continuous weather data tracking during insurance periods
+
+### 📊 **Insurance Package Types**
+The platform supports various agricultural insurance products:
+
+#### Rainfall Protection Plan
+- **Coverage**: Rice crops against excessive rainfall
+- **Trigger**: Rain intensity > 200mm over 14 days
+- **Region**: Mekong Delta (Kien Giang)
+
+#### Drought Defense Package
+- **Coverage**: Coffee crops from prolonged drought
+- **Trigger**: Rain intensity < 50mm over 30 days
+- **Region**: Central Highlands (Lam Dong)
+
+#### Storm Resistance Package
+- **Coverage**: Crop losses from typhoons
+- **Trigger**: Wind speed ≥ 90 km/h over 3 days
+- **Region**: Coastal areas (Thua Thien Hue)
+
+#### Flood Safeguard Plan
+- **Coverage**: Flood damage to rice fields
+- **Trigger**: Water level > 1.2 meters over 7 days
+- **Region**: Red River Delta (Hung Yen)
+
+### 🔄 **Smart Contract Events**
+The system listens to and processes various blockchain events:
+- `InsurancePurchased`: New insurance policy purchase
+- `WeatherDataRequested`: Oracle data request initiated
+- `WeatherResponse`: Oracle data received and processed
+- `handleOracleFulfillment`: Oracle callback execution
+
+### 📈 **Data Flow Architecture**
+```
+Weather API → Chainlink Oracle → Smart Contract → Backend → Database
+     ↓              ↓                ↓            ↓         ↓
+Real-time → Tamper-proof → Automated → Event → Transaction
+  Data       Verification   Triggers   Processing  Storage
+```
+
+### 🛡️ **Security Features**
+- **Multi-source Verification**: Weather data from multiple oracle nodes
+- **Timestamp Validation**: Ensures data freshness and relevance
+- **Geographic Precision**: Location-specific weather monitoring
+- **Automated Auditing**: Transparent and verifiable payout decisions
 
 ## Project Structure
 
@@ -118,6 +191,8 @@ defi-insurance-backend/
 │   └── setup-swagger.ts         # Swagger configuration
 ├── data/                         # Static data and templates
 │   ├── jsons/                   # JSON data files
+│   │   ├── agricultural-insurance.json    # Insurance packages
+│   │   └── avalanche-defi-insurance-contract.json  # Smart contract ABI
 │   └── mail-templates/          # Email templates
 ├── test/                         # Test files
 ├── .vscode/                      # VS Code configuration
@@ -173,6 +248,15 @@ AVALANCHE_FUJI_HTTPS_ENDPOINT=             # Fuji testnet RPC (https)
 AVALANCHE_FUJI_WSS_ENDPOINT=               # Fuji testnet RPC (wss)
 AVALANCHE_MAINNET_HTTPS_ENDPOINT=          # Mainnet RPC (https)
 AVALANCHE_MAINNET_WSS_ENDPOINT=            # Mainnet RPC (wss)
+```
+
+### Chainlink Configuration
+```env
+# Chainlink Oracle Settings
+CHAINLINK_SUBSCRIPTION_ID=                 # Chainlink VRF subscription ID
+CHAINLINK_ORACLE_ADDRESS=                  # Chainlink oracle contract address
+CHAINLINK_KEEPER_REGISTRY=                 # Chainlink keeper registry address
+CHAINLINK_WEATHER_FEED_ADDRESS=            # Weather data feed address
 ```
 
 ### Optional Services
@@ -286,6 +370,12 @@ exit
 AVALANCHE_DEFI_INSURANCE_SMART_CONTRACT=0x96C40a105c4dcA72e18a16EE511eA51bf4443685
 AVALANCHE_USDC_CONTRACT_ADDRESS=0x5425890298aed601595a70AB815c96711a31Bc65
 ```
+
+#### Configure Chainlink Integration
+1. Set up Chainlink oracle nodes or use existing feeds
+2. Configure Chainlink subscription ID
+3. Deploy or connect to weather data feeds
+4. Set up Chainlink Keepers for automated execution
 
 ## Development
 
@@ -542,11 +632,13 @@ yarn test:debug
 - [MongoDB Documentation](https://docs.mongodb.com/) - Database documentation
 - [Avalanche Documentation](https://docs.avax.network/) - Blockchain documentation
 - [Web3.js Documentation](https://web3js.org/docs/) - Web3 library documentation
+- [Chainlink Documentation](https://docs.chain.link/) - Oracle network documentation
 
 ### Community & Support
 - [NestJS Discord](https://discord.gg/G7Qnnhy) - Community support
 - [NestJS Courses](https://courses.nestjs.com/) - Video tutorials
 - [NestJS Devtools](https://devtools.nestjs.com/) - Development tools
+- [Chainlink Discord](https://discord.gg/chainlink) - Chainlink community
 
 ### Deployment Resources
 - [NestJS Mau](https://mau.nestjs.com/) - AWS deployment
